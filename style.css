@@ -10,16 +10,38 @@ body {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 .container {
     position: relative;
     width: 400px;
-    background: #fff;
+    background: rgba(255, 255, 255, 0.95);
     padding: 40px;
     border-radius: 20px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2),
+                0 5px 15px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    transform: translateY(0);
+    transition: transform 0.3s ease;
+}
+
+.container:hover {
+    transform: translateY(-5px);
 }
 
 .form-container {
@@ -35,9 +57,24 @@ form {
 }
 
 h1 {
-    color: #333;
+    color: #2d3436;
     font-weight: 600;
     letter-spacing: 0.5px;
+    font-size: 2em;
+    margin-bottom: 10px;
+    position: relative;
+    display: inline-block;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 3px;
+    background: linear-gradient(to right, #FF6B6B, #4ECDC4);
+    bottom: -5px;
+    left: 25%;
+    border-radius: 2px;
 }
 
 .social-icons {
@@ -48,81 +85,143 @@ h1 {
 }
 
 .social-icons .icon {
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    border: 1px solid #ddd;
-    color: #555;
+    border: none;
+    background: #f5f6fa;
+    color: #2d3436;
+    font-size: 1.2em;
     transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .social-icons .icon:hover {
-    border-color: #764ba2;
-    color: #764ba2;
+    transform: translateY(-3px) scale(1.1);
+    background: #fff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
+
+.social-icons .icon:nth-child(1):hover { color: #db4437; }
+.social-icons .icon:nth-child(2):hover { color: #4267B2; }
+.social-icons .icon:nth-child(3):hover { color: #333; }
+.social-icons .icon:nth-child(4):hover { color: #0077B5; }
 
 span {
-    color: #666;
+    color: #636e72;
     font-size: 14px;
+    margin: 15px 0;
 }
 
-input {
+.input-group {
+    position: relative;
     width: 100%;
+}
+
+.input-group input {
     padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
+    padding-top: 20px;
+    width: 100%;
+    border: 2px solid #dfe6e9;
+    border-radius: 12px;
     outline: none;
     font-size: 14px;
     transition: all 0.3s ease;
+    background: #f5f6fa;
 }
 
-input:focus {
-    border-color: #764ba2;
+.input-group input:focus {
+    border-color: #4ECDC4;
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(78, 205, 196, 0.1);
+}
+
+.input-group label {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: #636e72;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.input-group input:focus ~ label,
+.input-group input:valid ~ label {
+    top: 25%;
+    font-size: 11px;
+    color: #4ECDC4;
 }
 
 button {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
     color: white;
     padding: 15px;
     border: none;
-    border-radius: 10px;
+    border-radius: 12px;
     cursor: pointer;
     font-size: 16px;
     font-weight: 500;
     transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+button:hover::before {
+    left: 100%;
 }
 
 button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(118, 75, 162, 0.3);
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
 }
 
 .forgot-password {
-    color: #666;
+    color: #636e72;
     text-decoration: none;
     font-size: 14px;
+    transition: all 0.3s ease;
 }
 
 .forgot-password:hover {
-    color: #764ba2;
+    color: #FF6B6B;
 }
 
 .switch-text {
-    color: #666;
+    color: #636e72;
     font-size: 14px;
+    margin-top: 10px;
 }
 
 .switch-text a {
-    color: #764ba2;
+    color: #FF6B6B;
     text-decoration: none;
     font-weight: 500;
+    transition: all 0.3s ease;
 }
 
 .switch-text a:hover {
-    text-decoration: underline;
+    color: #4ECDC4;
 }
 
 /* Message styles */
@@ -131,43 +230,47 @@ button:hover {
     top: 20px;
     right: 20px;
     padding: 15px 25px;
-    border-radius: 8px;
+    border-radius: 12px;
     color: white;
     font-size: 14px;
     animation: slideIn 0.3s ease-out;
     z-index: 1000;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    backdrop-filter: blur(5px);
 }
 
 @keyframes slideIn {
     from {
-        transform: translateX(100%);
+        transform: translateX(100%) scale(0.8);
         opacity: 0;
     }
     to {
-        transform: translateX(0);
+        transform: translateX(0) scale(1);
         opacity: 1;
     }
 }
 
 .message-success {
-    background-color: #4CAF50;
+    background: linear-gradient(45deg, #00b894, #00cec9);
 }
 
 .message-error {
-    background-color: #f44336;
+    background: linear-gradient(45deg, #ff7675, #d63031);
 }
 
 .message-info {
-    background-color: #2196F3;
+    background: linear-gradient(45deg, #74b9ff, #0984e3);
 }
 
 /* Input validation styles */
-input.has-value:valid {
-    border-color: #4CAF50;
+.input-group input.has-value:valid {
+    border-color: #00b894;
+    background: rgba(0, 184, 148, 0.05);
 }
 
-input.has-value:invalid {
-    border-color: #f44336;
+.input-group input.has-value:invalid {
+    border-color: #ff7675;
+    background: rgba(255, 118, 117, 0.05);
 }
 
 /* Loading state */
