@@ -3,366 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome - Sign In or Sign Up</title>
+    <title>Sign In & Sign Up</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        .container {
-            position: relative;
-            width: 800px;
-            min-height: 500px;
-            background: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2),
-                        0 5px 15px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-        }
-
-        .forms-container {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-        }
-
-        .signin-signup {
-            position: absolute;
-            top: 50%;
-            transform: translate(0, -50%);
-            left: 0;
-            width: 50%;
-            transition: 0.7s ease-in-out;
-            display: grid;
-            grid-template-columns: 1fr;
-            z-index: 5;
-        }
-
-        form {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            padding: 0rem 5rem;
-            transition: all 0.2s 0.7s;
-            overflow: hidden;
-            grid-column: 1 / 2;
-            grid-row: 1 / 2;
-        }
-
-        form.sign-up-form {
-            opacity: 0;
-            z-index: 1;
-        }
-
-        form.sign-in-form {
-            z-index: 2;
-        }
-
-        .panels-container {
-            position: absolute;
-            height: 100%;
-            width: 100%;
-            top: 0;
-            left: 0;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-        }
-
-        .panel {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            z-index: 7;
-            padding: 3rem 17% 2rem 17%;
-        }
-
-        .left-panel {
-            pointer-events: none;
-        }
-
-        .right-panel {
-            pointer-events: none;
-            padding: 3rem 17% 2rem 17%;
-        }
-
-        .panel .content {
-            color: #fff;
-            transition: transform 0.9s ease-in-out;
-            transition-delay: 0.6s;
-        }
-
-        .panel h3 {
-            font-weight: 600;
-            line-height: 1;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .panel p {
-            font-size: 0.95rem;
-            padding: 0.7rem 0;
-        }
-
-        .btn.transparent {
-            margin: 1rem;
-            background: none;
-            border: 2px solid #fff;
-            width: 130px;
-            height: 41px;
-            font-weight: 600;
-            font-size: 0.8rem;
-        }
-
-        .right-panel .content {
-            transform: translateX(800px);
-        }
-
-        .container.sign-up-mode .signin-signup {
-            left: 50%;
-        }
-
-        .container.sign-up-mode form.sign-up-form {
-            opacity: 1;
-            z-index: 2;
-        }
-
-        .container.sign-up-mode form.sign-in-form {
-            opacity: 0;
-            z-index: 1;
-        }
-
-        .container.sign-up-mode .right-panel .content {
-            transform: translateX(0%);
-        }
-
-        .container.sign-up-mode .left-panel .content {
-            transform: translateX(-800px);
-        }
-
-        .container.sign-up-mode .right-panel {
-            pointer-events: all;
-        }
-
-        .container.sign-up-mode .left-panel {
-            pointer-events: none;
-        }
-
-        .overlay {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            width: 50%;
-            height: 100%;
-            background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
-            transition: transform 0.7s ease-in-out;
-            z-index: 6;
-        }
-
-        .container.sign-up-mode .overlay {
-            transform: translate(-100%);
-        }
-
-        @media (max-width: 870px) {
-            .container {
-                min-height: 800px;
-                height: 100vh;
-            }
-            .signin-signup {
-                width: 100%;
-                top: 75%;
-                transform: translate(-50%, -50%);
-                transition: 1s 0.8s ease-in-out;
-            }
-            .panels-container {
-                grid-template-columns: 1fr;
-                grid-template-rows: 1fr 2fr 1fr;
-            }
-            .panel {
-                flex-direction: row;
-                justify-content: space-around;
-                align-items: center;
-                padding: 2.5rem 8%;
-                grid-column: 1 / 2;
-            }
-            .overlay {
-                width: 100%;
-                height: 50%;
-                top: 50%;
-                left: 0;
-                transform: translateY(0);
-            }
-            .container.sign-up-mode .overlay {
-                transform: translateY(-100%);
-            }
-        }
-    </style>
 </head>
 <body>
+    <div class="background-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    
     <div class="container">
-        <div class="forms-container">
-            <div class="signin-signup">
-                <form action="#" class="sign-in-form">
-                    <h1>Welcome Back</h1>
-                    <div class="social-icons">
-                        <a href="#" class="icon"><i class="fab fa-google"></i></a>
-                        <a href="#" class="icon"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="icon"><i class="fab fa-github"></i></a>
-                        <a href="#" class="icon"><i class="fab fa-linkedin-in"></i></a>
+        <div class="forms-wrapper">
+            <!-- Sign In Form -->
+            <div class="form-container signin-container">
+                <form class="form">
+                    <h2>Welcome Back!</h2>
+                    <p>Please sign in to your account</p>
+                    
+                    <div class="social-container">
+                        <a href="#" class="social"><i class="fab fa-google"></i></a>
+                        <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social"><i class="fab fa-github"></i></a>
                     </div>
-                    <span>or use your email to sign in</span>
-                    <div class="input-group">
-                        <input type="email" name="email" required />
+                    
+                    <span>or use your email</span>
+                    
+                    <div class="form-group">
+                        <input type="email" name="email" required>
                         <label>Email</label>
+                        <i class="fas fa-envelope"></i>
                     </div>
-                    <div class="input-group">
-                        <input type="password" name="password" required minlength="8" />
+                    
+                    <div class="form-group">
+                        <input type="password" name="password" required>
                         <label>Password</label>
+                        <i class="fas fa-lock"></i>
+                        <i class="fas fa-eye toggle-password"></i>
                     </div>
-                    <a href="#" class="forgot-password">Forgot your password?</a>
-                    <button type="submit">
-                        <span>Sign In</span>
-                    </button>
-                </form>
-                <form action="#" class="sign-up-form">
-                    <h1>Create Account</h1>
-                    <div class="social-icons">
-                        <a href="#" class="icon"><i class="fab fa-google"></i></a>
-                        <a href="#" class="icon"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="icon"><i class="fab fa-github"></i></a>
-                        <a href="#" class="icon"><i class="fab fa-linkedin-in"></i></a>
+                    
+                    <div class="form-options">
+                        <label class="remember-me">
+                            <input type="checkbox">
+                            <span>Remember me</span>
+                        </label>
+                        <a href="#" class="forgot-password">Forgot Password?</a>
                     </div>
-                    <span>or use your email for registration</span>
-                    <div class="input-group">
-                        <input type="text" name="name" required minlength="2" />
-                        <label>Name</label>
-                    </div>
-                    <div class="input-group">
-                        <input type="email" name="email" required />
-                        <label>Email</label>
-                    </div>
-                    <div class="input-group">
-                        <input type="password" name="password" required minlength="8" />
-                        <label>Password</label>
-                    </div>
-                    <button type="submit">
-                        <span>Sign Up</span>
-                    </button>
+                    
+                    <button type="submit">Sign In</button>
+                    <p class="mobile-text">Don't have an account? <a href="#" class="toggle-form" data-form="signup">Sign Up</a></p>
                 </form>
             </div>
-        </div>
 
-        <div class="panels-container">
-            <div class="panel left-panel">
-                <div class="content">
-                    <h3>New here?</h3>
-                    <p>Join our community and start your journey with us today!</p>
-                    <button class="btn transparent" id="sign-up-btn">Sign Up</button>
-                </div>
+            <!-- Sign Up Form -->
+            <div class="form-container signup-container">
+                <form class="form">
+                    <h2>Create Account</h2>
+                    <p>Sign up for your new account</p>
+                    
+                    <div class="social-container">
+                        <a href="#" class="social"><i class="fab fa-google"></i></a>
+                        <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social"><i class="fab fa-github"></i></a>
+                    </div>
+                    
+                    <span>or use your email for registration</span>
+                    
+                    <div class="form-group">
+                        <input type="text" name="name" required>
+                        <label>Full Name</label>
+                        <i class="fas fa-user"></i>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="email" name="email" required>
+                        <label>Email</label>
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="password" name="password" required>
+                        <label>Password</label>
+                        <i class="fas fa-lock"></i>
+                        <i class="fas fa-eye toggle-password"></i>
+                    </div>
+                    
+                    <button type="submit">Sign Up</button>
+                    <p class="mobile-text">Already have an account? <a href="#" class="toggle-form" data-form="signin">Sign In</a></p>
+                </form>
             </div>
-            <div class="panel right-panel">
-                <div class="content">
-                    <h3>One of us?</h3>
-                    <p>Sign in and continue your journey with us!</p>
-                    <button class="btn transparent" id="sign-in-btn">Sign In</button>
+
+            <!-- Overlay -->
+            <div class="overlay-container">
+                <div class="overlay">
+                    <div class="overlay-panel overlay-left">
+                        <h2>Welcome Back!</h2>
+                        <p>Already have an account? Sign in to continue your journey with us!</p>
+                        <button class="ghost toggle-form" data-form="signin">Sign In</button>
+                    </div>
+                    <div class="overlay-panel overlay-right">
+                        <h2>Hello, Friend!</h2>
+                        <p>Enter your personal details and start your journey with us!</p>
+                        <button class="ghost toggle-form" data-form="signup">Sign Up</button>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="overlay"></div>
     </div>
 
-    <script>
-        const container = document.querySelector(".container");
-        const signUpBtn = document.querySelector("#sign-up-btn");
-        const signInBtn = document.querySelector("#sign-in-btn");
+    <!-- Success/Error Message Container -->
+    <div id="message-container"></div>
 
-        signUpBtn.addEventListener("click", () => {
-            container.classList.add("sign-up-mode");
-        });
-
-        signInBtn.addEventListener("click", () => {
-            container.classList.remove("sign-up-mode");
-        });
-
-        // Keep the existing form submission logic from script.js
-        document.addEventListener('DOMContentLoaded', function() {
-            const forms = document.querySelectorAll('form');
-            
-            forms.forEach(form => {
-                const inputs = form.querySelectorAll('input');
-                
-                inputs.forEach(input => {
-                    input.addEventListener('input', function() {
-                        if (input.value.length > 0) {
-                            input.classList.add('has-value');
-                        } else {
-                            input.classList.remove('has-value');
-                        }
-                    });
-                });
-
-                form.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    const formData = new FormData(form);
-                    const data = Object.fromEntries(formData);
-                    
-                    let isValid = true;
-                    let errorMessage = '';
-
-                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                    if (data.email && !emailRegex.test(data.email)) {
-                        isValid = false;
-                        errorMessage = 'Please enter a valid email address';
-                    }
-
-                    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
-                    if (data.password && !passwordRegex.test(data.password)) {
-                        isValid = false;
-                        errorMessage = 'Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one number';
-                    }
-
-                    if (isValid) {
-                        showMessage('Success! Processing your request...', 'success');
-                        
-                        setTimeout(() => {
-                            console.log('Form submitted:', data);
-                            showMessage('Login successful!', 'success');
-                        }, 1500);
-                    } else {
-                        showMessage(errorMessage, 'error');
-                    }
-                });
-            });
-
-            // Social media buttons handlers
-            document.querySelectorAll('.social-icons .icon').forEach(icon => {
-                icon.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const platform = this.querySelector('i').className.split('-')[2];
-                    showMessage(`${platform} authentication coming soon!`, 'info');
-                });
-            });
-        });
-
-        function showMessage(message, type) {
-            const existingMessage = document.querySelector('.message');
-            if (existingMessage) {
-                existingMessage.remove();
-            }
-
-            const messageElement = document.createElement('div');
-            messageElement.className = `message message-${type}`;
-            messageElement.textContent = message;
-
-            document.querySelector('.forms-container').appendChild(messageElement);
-
-            setTimeout(() => {
-                messageElement.remove();
-            }, 3000);
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
